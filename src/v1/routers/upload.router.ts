@@ -1,4 +1,4 @@
-import uploadController from '@/controllers/upload.controller.js'
+import uploadController from '@/v1/controllers/upload.controller.js'
 import { Router } from 'express'
 const uploadRouter = Router()
 

@@ -4,7 +4,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "npx tsx watch src/server.ts",
+    "dev": "npx tsx watch server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,6 +12,7 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
@@ -21,6 +22,7 @@
     "dotenv": "^16.4.7",
     "eslint": "^9.22.0",
     "globals": "^16.0.0",
+    "mongoose": "^8.12.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "typescript": "^5.8.2",
@@ -28,9 +30,11 @@
   },
   "dependencies": {
     "cloudinary": "^2.5.1",
+    "compression": "^1.8.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "express": "^4.21.2",
+    "helmet": "^8.0.0",
     "prettier": "^3.5.3",
     "tsc-alias": "^1.8.11",
     "tsx": "^4.19.3",

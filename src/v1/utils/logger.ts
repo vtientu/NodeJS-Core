@@ -11,12 +11,20 @@ const logFormat = winston.format.combine(
 )
 
 const logger = winston.createLogger({
-  level: 'info',
+  level: 'debug',
   format: logFormat,
   transports: [
     new winston.transports.Console(),
     new DailyRotateFile({
-      filename: './log/app-%DATE%.log',
+      level: 'info',
+      filename: 'src/v1/logs/info/%DATE%.log',
+      datePattern: 'DD-MM-YYYY',
+      maxFiles: '14d',
+      zippedArchive: true
+    }),
+    new DailyRotateFile({
+      level: 'error',
+      filename: 'src/v1/logs/error/%DATE%.log',
       datePattern: 'DD-MM-YYYY',
       maxFiles: '14d',
       zippedArchive: true
@@ -24,10 +32,8 @@ const logger = winston.createLogger({
   ]
 })
 
-logger.add(
-  new winston.transports.Console({
-    format: winston.format.simple()
-  })
-)
+logger.on('error', (err) => {
+  console.error('Lỗi ghi log:', err)
+})
 
 export default logger

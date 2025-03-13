@@ -1,0 +1,20 @@
+16:37:03 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:37:03 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:40:40 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:40:40 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:40:42 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:40:42 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:41:01 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:41:01 13-03-2025 [ERROR]: 🔥 Lỗi server: undefined
+16:41:07 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:41:07 13-03-2025 [ERROR]: 🔥 Lỗi server: {"code":"EADDRINUSE","errno":-4091,"syscall":"listen","address":"::","port":3000}
+16:41:34 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:41:34 13-03-2025 [ERROR]: 🔥 Lỗi server: {
+  "code": "EADDRINUSE",
+  "errno": -4091,
+  "syscall": "listen",
+  "address": "::",
+  "port": 3000
+}
+16:42:13 13-03-2025 [ERROR]: 🔥 Lỗi server: 
+16:42:13 13-03-2025 [ERROR]: Cổng 3000 đã bị chiếm!
