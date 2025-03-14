@@ -1,11 +1,8 @@
 import logger from '@/v1/utils/logger.js'
 import mongoose from 'mongoose'
+import mongoDBConfig from 'configs/mongodb.config.js'
 
-const DB_HOST = process.env.DB_HOST || 'localhost'
-const DB_PORT = process.env.DB_PORT || 27017
-const DB_NAME = process.env.DB_NAME || ''
-
-const connectionString = `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
+const connectionString = `mongodb://${mongoDBConfig.host}:${mongoDBConfig.port}/${mongoDBConfig.name}`
 
 class Database {
   private static instance: Database
@@ -29,7 +26,9 @@ class Database {
       mongoose.set('debug', true)
       mongoose.set('debug', { color: true })
 
-      await mongoose.connect(connectionString)
+      await mongoose.connect(connectionString, {
+        maxPoolSize: 50 // Tối 50 connections và có thể tái sử dụng connect. Default: 100
+      })
       this.isConnected = true
       logger.info('Database connected successfully')
     } catch (error) {

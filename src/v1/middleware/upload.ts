@@ -15,4 +15,4 @@ const upload = multer({
   }
 })
 
-export const singleUploadImage = upload.single('image')
+export const singleUploadImage = upload.single('avatar')

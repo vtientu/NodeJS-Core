@@ -8,7 +8,7 @@ const PORT = process.env.PORT_SERVER || 3000
 database.connectDB()
 
 const server = app.listen(PORT, () => {
-  logger.info(`🚀 Server đang chạy tại http://localhost:${PORT}`)
+  console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`)
 })
 
 server.on('error', (err: any) => {
