@@ -3,7 +3,9 @@ import { NextFunction, Request, Response } from 'express'
 
 const uploadController = {
   uploadAvatar: async (req: Request, res: Response, next: NextFunction) => {
-    await uploadService.uploadAvatar(req, res, next)
+    const file = req.file
+    const response = await uploadService.uploadAvatar(file)
+    res.status(200).json(response)
   }
 }
 
