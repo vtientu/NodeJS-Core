@@ -67,7 +67,7 @@ class ErrorResponse extends Error {
   // Trong Typescript khi tạo constructor với public/private key thì sẽ tự tạo prototype và gán giá trị, không cần khai báo thủ công.
   constructor(
     public message: string,
-    public statusCode: HttpStatusCode
+    public status: HttpStatusCode
   ) {
     super(message)
     Object.setPrototypeOf(this, new.target.prototype)
@@ -249,6 +249,7 @@ class UnavailableForLegalReasonsError extends ErrorResponse {
 }
 
 export {
+  ErrorResponse,
   BadRequestError,
   UnauthorizedError,
   PaymentRequiredError,
