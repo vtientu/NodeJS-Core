@@ -1,6 +1,6 @@
-import logger from '@/v1/utils/logger.js'
-import database from '@/v1/database/database.js'
 import app from '@/app.js'
+import database from '@database/database.js'
+import logger from '@utils/logger.js'
 import 'dotenv/config'
 
 const PORT = process.env.PORT_SERVER || 3000

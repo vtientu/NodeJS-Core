@@ -1,7 +1,7 @@
+import uploadController from '@controllers/upload.controller.js'
+import { asyncHandler } from '@middleware/errorHandler.js'
+import { singleUploadImage } from '@middleware/upload.js'
 import { Router } from 'express'
-import { singleUploadImage } from '@/v1/middleware/upload.js'
-import uploadController from '@/v1/controllers/upload.controller.js'
-import { asyncHandler } from '@/v1/middleware/errorHandler.js'
 
 const uploadRouter = Router()
 

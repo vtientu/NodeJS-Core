@@ -9,7 +9,19 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "baseUrl": ".", // Đường dẫn base cho các import
     "paths": {
-      "@/*": ["src/*"] // Đường dẫn tương đối cho các import (alias)
+      "@constants/*": ["src/v1/constants/*"],
+      "@controllers/*": ["src/v1/controllers/*"],
+      "@core/*": ["src/v1/core/*"],
+      "@database/*": ["src/v1/database/*"],
+      "@helpers/*": ["src/v1/helpers/*"],
+      "@interfaces/*": ["src/v1/interfaces/*"],
+      "@middleware/*": ["src/v1/middleware/*"],
+      "@models/*": ["src/v1/models/*"],
+      "@repositories/*": ["src/v1/repositories/*"],
+      "@routers/*": ["src/v1/routers/*"],
+      "@services/*": ["src/v1/services/*"],
+      "@utils/*": ["src/v1/utils/*"],
+      "@/*": ["src/*"]
     }
   },
   "files": ["src/type.d.ts"], // Các file dùng để defined global type cho dự án

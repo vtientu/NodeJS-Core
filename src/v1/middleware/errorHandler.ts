@@ -1,4 +1,4 @@
-import logger from '@/v1/utils/logger.js'
+import logger from '@utils/logger.js'
 import { Request, Response, NextFunction } from 'express'
 import multer from 'multer'
 
@@ -11,7 +11,7 @@ export const handleUploadError = (err: any, req: Request, res: Response, next: N
     res.status(400).json({ message: 'Lỗi upload file: ' + err.message })
   } else if (err) {
     logger.error(err.message)
-    res.status(400).json({ message: err.message })
+    res.status(err.status || 500).json({ message: err.message || 'Internal Server Error' })
   }
   next()
 }

@@ -1,6 +1,5 @@
-import { BadRequestError } from '@/v1/core/error.response.js'
+import { BadRequestError } from '@core/error.response.js'
 import cloudinary from 'configs/cloudinary.config.js'
-import { NextFunction, Request, Response } from 'express'
 
 const uploadService = {
   uploadAvatar: async (file?: Express.Multer.File) => {
@@ -18,10 +17,10 @@ const uploadService = {
 
         return result
       } else {
-        return new BadRequestError('No file uploaded!')
+        throw new BadRequestError('No file uploaded!')
       }
     } catch (error: any) {
-      return new Error(error?.message)
+      throw new Error(error?.message)
     }
   }
 }

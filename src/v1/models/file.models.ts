@@ -1,9 +1,9 @@
-import mongoose from 'mongoose'
+import { Schema, model } from 'mongoose'
 
-const DOCUMENT_NAME = 'file'
-const COLLECTIONS_NAME = 'files'
+const DOCUMENT_NAME = 'File'
+const COLLECTIONS_NAME = 'Files'
 
-const fileSchema = new mongoose.Schema(
+const FileSchema = new Schema(
   {
     name: {
       type: String,
@@ -28,10 +28,9 @@ const fileSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-    collection: COLLECTIONS_NAME,
-    _id: true
+    collection: COLLECTIONS_NAME
   }
 )
 
 //Export the model
-module.exports = mongoose.model(DOCUMENT_NAME, fileSchema)
+export const FileModel = model(DOCUMENT_NAME, FileSchema)

@@ -1,4 +1,4 @@
-import uploadRouter from '@/v1/routers/upload.router.js'
+import uploadRouter from '@routers/upload.router.js'
 import { Router } from 'express'
 const router = Router()
 

@@ -30,6 +30,6 @@ export default [
         }
       ]
     },
-    ignores: ['**/node_modules/', '**/dist/', 'eslint.config.js']
+    ignores: ['**/node_modules/', '**/dist/', 'eslint.config.js', 'tsconfig.json']
   }
 ]

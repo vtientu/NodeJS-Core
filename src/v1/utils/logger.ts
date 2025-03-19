@@ -31,8 +31,4 @@ const logger = winston.createLogger({
   ]
 })
 
-logger.on('error', (err) => {
-  console.error('Lỗi ghi log:', err)
-})
-
 export default logger

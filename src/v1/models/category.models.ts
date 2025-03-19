@@ -1,8 +1,9 @@
 import { Schema, model } from 'mongoose'
-const COLLECTIONS_NAME = 'category'
-const DOCUMENT_NAME = 'categoryModel'
 
-const categorySchema = new Schema(
+const COLLECTIONS_NAME = 'Category'
+const DOCUMENT_NAME = 'CategoryModel'
+
+const CategorySchema = new Schema(
   {
     name: {
       type: String,
@@ -15,9 +16,8 @@ const categorySchema = new Schema(
   },
   {
     timestamps: true,
-    collection: COLLECTIONS_NAME,
-    _id: true
+    collection: COLLECTIONS_NAME
   }
 )
 
-export const categoryModel = model(DOCUMENT_NAME, categorySchema)
+export const CategoryModel = model(DOCUMENT_NAME, CategorySchema)
