@@ -1,5 +1,5 @@
 import { Status } from '@constants/app.constants.js'
-import { IUser } from '@interfaces/User.js'
+import { IUser } from '@interfaces/user.interface.js'
 import { Schema, model } from 'mongoose'
 
 const DOCUMENT_NAME = 'User'

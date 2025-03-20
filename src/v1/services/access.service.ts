@@ -1,6 +1,6 @@
 import { createTokensPair } from '@/v1/auth/authUtils.js'
 import { BadRequestError } from '@core/error.response.js'
-import { IUserCreate } from '@interfaces/User.js'
+import { IUserCreate } from '@interfaces/user.interface.js'
 import UserRepository from '@repositories/user.repository.js'
 import KeyTokenService from '@services/keyToken.service.js'
 import { pickFields } from '@utils/index.js'

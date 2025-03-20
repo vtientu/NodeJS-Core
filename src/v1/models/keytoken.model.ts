@@ -1,4 +1,4 @@
-import { IKeyToken } from '@interfaces/KeyToken.js'
+import { IKeyToken } from '@interfaces/keytoken.interface.js'
 import { Schema, model } from 'mongoose'
 
 const DOCUMENT_NAME = 'KeyToken'

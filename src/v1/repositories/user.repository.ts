@@ -1,6 +1,6 @@
 import BaseRepository from '@core/BaseRepositories.js'
-import { IUser, IUserCreate } from '@interfaces/User.js'
-import UserModel from '@models/user.models.js'
+import { IUser, IUserCreate } from '@interfaces/user.interface.js'
+import UserModel from '@models/user.model.js'
 
 class UserRepository extends BaseRepository<IUser> {
   constructor() {

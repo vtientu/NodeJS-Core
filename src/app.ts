@@ -6,6 +6,7 @@ import helmet from 'helmet'
 import compression from 'compression'
 import router from '@routers/index.js'
 import { globalErrorHandler, notFoundHandler } from '@middleware/errorHandler.js'
+import authMiddleware from '@/v1/auth/authMiddleware.js'
 
 const app = express()
 
@@ -14,6 +15,8 @@ app.use(express.json())
 app.use(morgan('dev'))
 app.use(helmet())
 app.use(compression())
+
+app.use(authMiddleware)
 // checkOverload()
 
 app.use('/api/v1', router)

@@ -1,6 +1,6 @@
 import BaseRepository from '@core/BaseRepositories.js'
-import { IKeyToken, IKeyTokenCreate } from '@interfaces/KeyToken.js'
-import KeyTokenModel from '@models/keytoken.models.js'
+import { IKeyToken, IKeyTokenCreate } from '@interfaces/keytoken.interface.js'
+import KeyTokenModel from '@models/keytoken.model.js'
 
 class KeyTokenRepository extends BaseRepository<IKeyToken> {
   constructor() {

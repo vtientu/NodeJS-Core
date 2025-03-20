@@ -1,4 +1,4 @@
-import { IKeyTokenCreate } from '@interfaces/KeyToken.js'
+import { IKeyTokenCreate } from '@interfaces/keytoken.interface.js'
 import KeyTokenRepository from '@repositories/keyToken.repository.js'
 
 class KeyTokenService {
