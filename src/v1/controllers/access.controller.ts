@@ -3,7 +3,8 @@ import { NextFunction, Request, Response } from 'express'
 
 class AccessController {
   signUp = async (req: Request, res: Response, next: NextFunction) => {
-    const newUser = AccessService.signUp(req.body)
+    const newUser = await AccessService.signUp(req.body)
+
     res.status(201).json(newUser)
   }
 }

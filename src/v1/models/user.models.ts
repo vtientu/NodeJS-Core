@@ -1,6 +1,6 @@
 import { Status } from '@constants/app.constants.js'
 import { IUser } from '@interfaces/User.js'
-import { Schema, Types, model } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 const DOCUMENT_NAME = 'User'
 const COLLECTION_NAME = 'Users'
@@ -43,4 +43,5 @@ const UserSchema = new Schema(
   }
 )
 
-export const UserModel = model<IUser>(DOCUMENT_NAME, UserSchema)
+const UserModel = model<IUser>(DOCUMENT_NAME, UserSchema)
+export default UserModel

@@ -1,14 +1,24 @@
-import { IUserCreate } from '@interfaces/User.js'
-import { UserModel } from '@models/user.models.js'
+import BaseRepository from '@core/BaseRepositories.js'
+import { IUser, IUserCreate } from '@interfaces/User.js'
+import UserModel from '@models/user.models.js'
 
-class UserRepository {
-  getUserByEmail = async (email: string) => {
-    return await UserModel.findOne({
+class UserRepository extends BaseRepository<IUser> {
+  constructor() {
+    super(UserModel)
+  }
+
+  getUserByEmail = (email: string) => {
+    return this.findOne({
       email
     }).lean()
   }
-  createUser = async (user: IUserCreate) => {
-    return await UserModel.create(user)
+
+  getUserById = (id: string) => {
+    return this.findById(id).lean()
+  }
+
+  createUser = (user: IUserCreate) => {
+    return this.create(user)
   }
 }
 

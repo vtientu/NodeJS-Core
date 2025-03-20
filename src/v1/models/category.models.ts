@@ -20,4 +20,5 @@ const CategorySchema = new Schema(
   }
 )
 
-export const CategoryModel = model(DOCUMENT_NAME, CategorySchema)
+const CategoryModel = model(DOCUMENT_NAME, CategorySchema)
+export default CategoryModel

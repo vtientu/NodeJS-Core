@@ -33,4 +33,5 @@ const FileSchema = new Schema(
 )
 
 //Export the model
-export const FileModel = model(DOCUMENT_NAME, FileSchema)
+const FileModel = model(DOCUMENT_NAME, FileSchema)
+export default FileModel

@@ -1,0 +1,12 @@
+14:56:15 20-03-2025 [ERROR]: Email already registered!
+14:56:31 20-03-2025 [ERROR]: keyToken validation failed: user: Path `user` is required.
+14:58:58 20-03-2025 [ERROR]: keyToken validation failed: user: Path `user` is required.
+14:59:49 20-03-2025 [ERROR]: keyToken validation failed: user: Path `user` is required.
+15:00:28 20-03-2025 [ERROR]: keyToken validation failed: user: Path `user` is required.
+15:02:06 20-03-2025 [ERROR]: KeyToken validation failed: user: Path `user` is required.
+15:03:47 20-03-2025 [ERROR]: KeyToken validation failed: user: Path `user` is required.
+15:04:50 20-03-2025 [ERROR]: Error creating key token
+15:08:50 20-03-2025 [ERROR]: secretOrPrivateKey must be an asymmetric key when using RS256
+15:11:24 20-03-2025 [ERROR]: secretOrPrivateKey must be an asymmetric key when using RS256
+15:16:16 20-03-2025 [ERROR]: Expected "payload" to be a plain object.
+15:59:24 20-03-2025 [ERROR]: Email already registered!

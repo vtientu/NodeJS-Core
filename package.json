@@ -30,12 +30,16 @@
     "typescript-eslint": "^8.26.1"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/lodash": "^4.17.16",
     "cloudinary": "^2.5.1",
     "compression": "^1.8.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
     "prettier": "^3.5.3",
     "tsc-alias": "^1.8.11",
     "tsx": "^4.19.3",
