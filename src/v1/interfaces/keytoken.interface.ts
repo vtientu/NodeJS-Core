@@ -5,12 +5,14 @@ export interface IKeyToken extends Document {
   userId: Types.ObjectId
   accessTokenKey: string
   refreshTokenKey: string
-  refreshToken: string[]
+  refreshToken: string
+  refreshTokensUsed: string[]
 }
 
 export interface IKeyTokenCreate {
   user: Types.ObjectId
   accessTokenKey: string
   refreshTokenKey: string
-  refreshToken?: string[]
+  refreshToken: string
+  refreshTokensUsed?: string[]
 }

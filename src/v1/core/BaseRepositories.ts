@@ -1,4 +1,4 @@
-import { Model, Document, FilterQuery } from 'mongoose'
+import { Model, Document, FilterQuery, QueryOptions } from 'mongoose'
 
 class BaseRepository<T extends Document> {
   protected model: Model<T>
@@ -23,12 +23,16 @@ class BaseRepository<T extends Document> {
     return this.model.create(data)
   }
 
-  update(id: string, data: Partial<T>) {
-    return this.model.findByIdAndUpdate(id, data, { new: true }).lean()
+  update(id: string, data: Partial<T>, options: QueryOptions<T>) {
+    return this.model.findByIdAndUpdate(id, data, options).lean()
   }
 
-  delete(id: string) {
-    return this.model.findByIdAndDelete(id).lean()
+  deleteOne(filter: FilterQuery<T>) {
+    return this.model.deleteOne(filter).lean()
+  }
+
+  findOneAndUpdate(filter: FilterQuery<T>, data: Partial<T>, options: QueryOptions<T>) {
+    return this.model.findOneAndUpdate(filter, data, options).lean()
   }
 }
 
