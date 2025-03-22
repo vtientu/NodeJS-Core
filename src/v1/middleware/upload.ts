@@ -1,3 +1,4 @@
+import { BadRequestError } from '@core/error.response.js'
 import multer from 'multer'
 
 const storage = multer.memoryStorage()
@@ -10,7 +11,7 @@ const upload = multer({
     if (file.mimetype.startsWith('image/')) {
       cb(null, true)
     } else {
-      cb(new Error('Không hỗ trợ định dạng file upload!'))
+      cb(new BadRequestError('Không hỗ trợ định dạng file upload!'))
     }
   }
 })

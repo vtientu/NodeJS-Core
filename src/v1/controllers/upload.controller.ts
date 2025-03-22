@@ -1,12 +1,14 @@
+import { OK } from '@core/success.response.js'
 import UploadService from '@services/upload.service.js'
 import { NextFunction, Request, Response } from 'express'
 
 class UploadController {
-  uploadAvatar = async (req: Request, res: Response, next: NextFunction) => {
-    const file = req.file
-    const response = await UploadService.uploadAvatar(file)
-    res.status(200).json(response)
+  public static async uploadAvatar(req: Request, res: Response, next: NextFunction) {
+    new OK({
+      message: 'Upload avatar successful!',
+      metadata: await UploadService.uploadAvatar(req.file)
+    }).send(res)
   }
 }
 
-export default new UploadController()
+export default UploadController

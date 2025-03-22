@@ -5,7 +5,6 @@ import { NextFunction, Request, Response } from 'express'
 
 class AccessController {
   public static async login(req: Request, res: Response, next: NextFunction) {
-    console.log(req.headers.authorization)
     new OK({
       message: 'Login successfully!',
       metadata: await AccessService.login(req.body)
