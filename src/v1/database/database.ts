@@ -1,6 +1,6 @@
-import logger from '@/v1/utils/logger.js'
 import mongoose from 'mongoose'
 import mongoDBConfig from 'configs/mongodb.config.js'
+import logger from '@utils/logger.js'
 
 const connectionString = `mongodb://${mongoDBConfig.host}:${mongoDBConfig.port}/${mongoDBConfig.name}`
 

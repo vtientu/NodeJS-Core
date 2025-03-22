@@ -1,4 +1,4 @@
-import { createTokensPair } from '@/v1/auth/authUtils.js'
+import { createTokensPair } from '@auth/authUtils.js'
 import { BadRequestError } from '@core/error.response.js'
 import { ILogin } from '@interfaces/access.interfaces.js'
 import { IKeyToken } from '@interfaces/keytoken.interface.js'

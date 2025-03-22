@@ -4,6 +4,6 @@ import { Router } from 'express'
 const router = Router()
 
 router.use('/uploads', uploadRouter)
-router.use('/access', accessRouter)
+router.use('/auth', accessRouter)
 
 export default router

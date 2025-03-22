@@ -1,3 +1,4 @@
+import { Request } from 'express'
 import JWT from 'jsonwebtoken'
 
 export const createTokensPair = ({
@@ -13,4 +14,13 @@ export const createTokensPair = ({
   const refreshToken = JWT.sign(payload, refreshTokenKey, { expiresIn: '7 days' })
 
   return { accessToken, refreshToken }
+}
+
+export const getTokenFromHeader = (req: Request): string | null => {
+  const authHeader = req.headers.authorization
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    return authHeader.split(' ')[1] // Lấy phần token sau "Bearer"
+  }
+
+  return null
 }

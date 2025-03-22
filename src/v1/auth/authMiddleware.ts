@@ -1,3 +1,4 @@
+import { getTokenFromHeader } from '@auth/authUtils.js'
 import { HEADER } from '@constants/app.constants.js'
 import { ForbiddenError, NotFoundError, UnauthorizedError } from '@core/error.response.js'
 import asyncHandler from '@helpers/asyncHandler.js'
@@ -43,7 +44,7 @@ export const authentication = asyncHandler(async (req: CustomRequest, res: Respo
   const userId = req.headers[HEADER.CLIENT_ID]?.toString()
 
   if (!userId) {
-    throw new UnauthorizedError('Invalid Request')
+    throw new UnauthorizedError()
   }
 
   const keyStore = await KeyTokenService.findByUserId(userId)
@@ -52,9 +53,9 @@ export const authentication = asyncHandler(async (req: CustomRequest, res: Respo
     throw new NotFoundError('Not Found Key Store')
   }
 
-  const accessToken = req.headers[HEADER.AUTHORIZATION]?.toString()
+  const accessToken = getTokenFromHeader(req)
   if (!accessToken) {
-    throw new UnauthorizedError('Invalid Request')
+    throw new UnauthorizedError()
   }
 
   try {

@@ -10,6 +10,7 @@
     "baseUrl": ".", // Đường dẫn base cho các import
     "paths": {
       "@constants/*": ["src/v1/constants/*"],
+      "@auth/*": ["src/v1/auth/*"],
       "@controllers/*": ["src/v1/controllers/*"],
       "@core/*": ["src/v1/core/*"],
       "@database/*": ["src/v1/database/*"],

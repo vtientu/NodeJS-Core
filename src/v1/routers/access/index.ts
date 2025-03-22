@@ -1,4 +1,4 @@
-import { authentication } from '@/v1/auth/authMiddleware.js'
+import { authentication } from '@auth/authMiddleware.js'
 import accessController from '@controllers/access.controller.js'
 import asyncHandler from '@helpers/asyncHandler.js'
 import { Router } from 'express'

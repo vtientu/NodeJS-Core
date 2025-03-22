@@ -5,6 +5,5 @@ export enum Status {
 
 export const HEADER = {
   API_KEY: 'x-api-key',
-  CLIENT_ID: 'x-client-id',
-  AUTHORIZATION: 'authorization'
+  CLIENT_ID: 'x-client-id'
 }

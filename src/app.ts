@@ -6,7 +6,6 @@ import helmet from 'helmet'
 import compression from 'compression'
 import router from '@routers/index.js'
 import { globalErrorHandler, notFoundHandler } from '@middleware/errorHandler.js'
-import { apiKey, permission } from '@/v1/auth/authMiddleware.js'
 
 const app = express()
 
