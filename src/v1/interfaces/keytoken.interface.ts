@@ -1,8 +1,8 @@
-import { Document, Types } from 'mongoose'
+import { Document, Schema } from 'mongoose'
 
 export interface IKeyToken extends Document {
-  _id: Types.ObjectId
-  userId: Types.ObjectId
+  _id: Schema.Types.ObjectId
+  userId: Schema.Types.ObjectId
   accessTokenKey: string
   refreshTokenKey: string
   refreshToken: string
@@ -10,7 +10,7 @@ export interface IKeyToken extends Document {
 }
 
 export interface IKeyTokenCreate {
-  user: Types.ObjectId
+  user: Schema.Types.ObjectId
   accessTokenKey: string
   refreshTokenKey: string
   refreshToken: string

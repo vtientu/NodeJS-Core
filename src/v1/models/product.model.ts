@@ -34,7 +34,7 @@ const ProductSchema = new Schema(
       ref: 'User',
       required: true
     },
-    product_attribute: {
+    product_attributes: {
       type: Schema.Types.Mixed,
       required: true
     }

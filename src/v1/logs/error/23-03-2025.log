@@ -9,3 +9,5 @@
 10:09:14 23-03-2025 [ERROR]: holderToken.updateOne is not a function
 10:09:36 23-03-2025 [ERROR]: holderToken.updateOne is not a function
 10:23:39 23-03-2025 [ERROR]: Some thing wrong! Please login against
+20:20:56 23-03-2025 [ERROR]: Invalid Product Types undefined
+20:31:35 23-03-2025 [ERROR]: Clothing validation failed: brand: Path `brand` is required.

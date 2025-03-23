@@ -104,3 +104,28 @@
 10:23:08 23-03-2025 [INFO]: Database connected successfully
 10:23:39 23-03-2025 [ERROR]: Some thing wrong! Please login against
 18:25:33 23-03-2025 [INFO]: Database connected successfully
+20:20:21 23-03-2025 [INFO]: Database connected successfully
+20:20:56 23-03-2025 [ERROR]: Invalid Product Types undefined
+20:26:02 23-03-2025 [INFO]: Database connected successfully
+20:26:06 23-03-2025 [INFO]: Database connected successfully
+20:26:28 23-03-2025 [INFO]: Database connected successfully
+20:26:30 23-03-2025 [INFO]: Database connected successfully
+20:26:38 23-03-2025 [INFO]: Database connected successfully
+20:26:48 23-03-2025 [INFO]: Database connected successfully
+20:26:53 23-03-2025 [INFO]: Database connected successfully
+20:27:10 23-03-2025 [INFO]: Database connected successfully
+20:27:18 23-03-2025 [INFO]: Database connected successfully
+20:27:25 23-03-2025 [INFO]: Database connected successfully
+20:28:43 23-03-2025 [INFO]: Database connected successfully
+20:28:45 23-03-2025 [INFO]: Database connected successfully
+20:28:56 23-03-2025 [INFO]: Database connected successfully
+20:28:58 23-03-2025 [INFO]: Database connected successfully
+20:29:50 23-03-2025 [INFO]: Database connected successfully
+20:29:52 23-03-2025 [INFO]: Database connected successfully
+20:30:51 23-03-2025 [INFO]: Database connected successfully
+20:31:03 23-03-2025 [INFO]: Database connected successfully
+20:31:07 23-03-2025 [INFO]: Database connected successfully
+20:31:31 23-03-2025 [INFO]: Database connected successfully
+20:31:35 23-03-2025 [ERROR]: Clothing validation failed: brand: Path `brand` is required.
+20:32:11 23-03-2025 [INFO]: Database connected successfully
+20:32:27 23-03-2025 [INFO]: Database connected successfully

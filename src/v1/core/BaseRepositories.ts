@@ -1,13 +1,13 @@
-import { Model, Document, FilterQuery, QueryOptions, Types, UpdateQuery } from 'mongoose'
+import { Model, Document, FilterQuery, QueryOptions, Schema, UpdateQuery } from 'mongoose'
 
-class BaseRepository<T extends Document & { _id: Types.ObjectId }> {
+class BaseRepository<T extends Document & { _id: Schema.Types.ObjectId }> {
   protected model: Model<T>
 
   constructor(model: Model<T>) {
     this.model = model
   }
 
-  findById(id: Types.ObjectId) {
+  findById(id: Schema.Types.ObjectId) {
     return this.model.findById(id)
   }
 
@@ -23,8 +23,8 @@ class BaseRepository<T extends Document & { _id: Types.ObjectId }> {
     return this.model.create(data)
   }
 
-  async update(id: Types.ObjectId, data: UpdateQuery<T>, options: QueryOptions = { new: true }) {
-    return await this.model.findByIdAndUpdate(id, data, options).exec()
+  update(id: Schema.Types.ObjectId, data: UpdateQuery<T>, options: QueryOptions = { new: true }) {
+    return this.model.findByIdAndUpdate(id, data, options).exec()
   }
 
   deleteOne(filter: FilterQuery<T>) {

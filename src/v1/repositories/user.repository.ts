@@ -1,7 +1,7 @@
 import BaseRepository from '@core/BaseRepositories.js'
 import { IUser, IUserCreate } from '@interfaces/user.interface.js'
 import UserModel from '@models/user.model.js'
-import { Types } from 'mongoose'
+import { Schema } from 'mongoose'
 
 class UserRepository extends BaseRepository<IUser> {
   constructor() {
@@ -14,7 +14,7 @@ class UserRepository extends BaseRepository<IUser> {
     }).lean()
   }
 
-  findUserById = (id: Types.ObjectId) => {
+  findUserById = (id: Schema.Types.ObjectId) => {
     return this.findById(id).lean()
   }
 

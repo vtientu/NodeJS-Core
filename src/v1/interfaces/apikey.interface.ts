@@ -1,8 +1,7 @@
-import { Document } from 'mongoose'
-import { Types } from 'mongoose'
+import { Document, Schema } from 'mongoose'
 
 export interface IApiKey extends Document {
-  _id: Types.ObjectId
+  _id: Schema.Types.ObjectId
   key: string
   status: boolean
   permissions: string[]
