@@ -24,6 +24,13 @@ class AccessController {
       metadata: await AccessService.logout(req.keyStore)
     }).send(res)
   }
+
+  public static async refreshToken(req: Request, res: Response, next: NextFunction) {
+    new OK({
+      message: 'Refresh success!',
+      metadata: await AccessService.handleRefreshToken(req.headers.authorization)
+    }).send(res)
+  }
 }
 
 export default AccessController

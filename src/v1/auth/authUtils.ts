@@ -16,11 +16,14 @@ export const createTokensPair = ({
   return { accessToken, refreshToken }
 }
 
-export const getTokenFromHeader = (req: Request): string | null => {
-  const authHeader = req.headers.authorization
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    return authHeader.split(' ')[1] // Lấy phần token sau "Bearer"
+export const getTokenFromHeader = (token?: string): string | null => {
+  if (token && token?.startsWith('Bearer ')) {
+    return token.split(' ')[1] // Lấy phần token sau "Bearer"
   }
 
   return null
+}
+
+export const verifyJWT = ({ token, keySecret }: { token: string; keySecret: string }) => {
+  return JWT.verify(token, keySecret)
 }

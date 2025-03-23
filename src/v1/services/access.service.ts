@@ -1,14 +1,15 @@
-import { createTokensPair } from '@auth/authUtils.js'
-import { BadRequestError } from '@core/error.response.js'
+import { createTokensPair, getTokenFromHeader, verifyJWT } from '@auth/authUtils.js'
+import { BadRequestError, ForbiddenError, UnauthorizedError } from '@core/error.response.js'
 import { ILogin } from '@interfaces/access.interfaces.js'
 import { IKeyToken } from '@interfaces/keytoken.interface.js'
 import { IUserCreate } from '@interfaces/user.interface.js'
-import keyTokenRepository from '@repositories/keyToken.repository.js'
+import KeyTokenRepository from '@repositories/keyToken.repository.js'
 import UserRepository from '@repositories/user.repository.js'
 import KeyTokenService from '@services/keyToken.service.js'
 import UserService from '@services/user.service.js'
 import { pickFields } from '@utils/index.js'
 import bcryptjs from 'bcryptjs'
+import { JwtPayload } from 'jsonwebtoken'
 import crypto from 'node:crypto'
 
 class AccessService {
@@ -61,7 +62,7 @@ class AccessService {
   }
 
   public static signUp = async ({ name, email, password }: IUserCreate) => {
-    const holderUser = await UserRepository.getUserByEmail(email)
+    const holderUser = await UserRepository.findUserByEmail(email)
 
     if (holderUser) {
       throw new BadRequestError('Email already registered!')
@@ -115,14 +116,61 @@ class AccessService {
     }
   }
 
-  public static logout = async (keyStore?: IKeyToken) => {
+  public static async logout(keyStore?: IKeyToken) {
     if (!keyStore?._id) {
       throw new BadRequestError()
     }
 
-    return await keyTokenRepository.deleteOne({
+    return await KeyTokenRepository.deleteOne({
       _id: keyStore?._id
     })
+  }
+
+  public static async handleRefreshToken(token?: string) {
+    if (!token) throw new BadRequestError()
+
+    const refreshToken = getTokenFromHeader(token)
+
+    if (!refreshToken) throw new BadRequestError()
+
+    const tokenFound = await KeyTokenRepository.findByRefreshTokenUsed(refreshToken)
+
+    if (tokenFound) {
+      const { userId } = verifyJWT({ token: refreshToken, keySecret: tokenFound.refreshTokenKey }) as JwtPayload
+
+      await KeyTokenRepository.deleteKeyByUID(userId)
+      throw new ForbiddenError('Some thing wrong! Please login against')
+    }
+
+    const holderToken = await KeyTokenRepository.findByRefreshToken(refreshToken)
+
+    if (!holderToken) throw new UnauthorizedError()
+
+    const { _id } = verifyJWT({ token: refreshToken, keySecret: holderToken.refreshTokenKey }) as JwtPayload
+
+    const userFound = await UserRepository.findUserById(_id)
+
+    if (!userFound) throw new ForbiddenError('Shop not registered!')
+
+    const tokens = createTokensPair({
+      payload: pickFields(userFound, ['_id', 'name', 'email']),
+      accessTokenKey: holderToken.accessTokenKey,
+      refreshTokenKey: holderToken.refreshTokenKey
+    })
+
+    await KeyTokenRepository.update(holderToken._id, {
+      $set: {
+        refreshToken: tokens.refreshToken
+      },
+      $addToSet: {
+        refreshTokensUsed: refreshToken // Đã được sử dụng
+      }
+    })
+
+    return {
+      user: pickFields(userFound, ['_id', 'name', 'email']),
+      tokens
+    }
   }
 }
 

@@ -53,7 +53,9 @@ export const authentication = asyncHandler(async (req: CustomRequest, res: Respo
     throw new NotFoundError('Not Found Key Store')
   }
 
-  const accessToken = getTokenFromHeader(req)
+  const authHeader = req.headers.authorization
+
+  const accessToken = getTokenFromHeader(authHeader)
   if (!accessToken) {
     throw new UnauthorizedError()
   }

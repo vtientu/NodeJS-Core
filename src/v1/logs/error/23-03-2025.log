@@ -1,0 +1,10 @@
+09:57:19 23-03-2025 [ERROR]: Unauthorized
+10:00:41 23-03-2025 [ERROR]: Unauthorized
+10:02:25 23-03-2025 [ERROR]: Unauthorized
+10:02:47 23-03-2025 [ERROR]: invalid signature
+10:03:17 23-03-2025 [ERROR]: invalid signature
+10:06:31 23-03-2025 [ERROR]: invalid signature
+10:07:43 23-03-2025 [ERROR]: Shop not registered!
+10:08:58 23-03-2025 [ERROR]: holderToken.updateOne is not a function
+10:09:14 23-03-2025 [ERROR]: holderToken.updateOne is not a function
+10:09:36 23-03-2025 [ERROR]: holderToken.updateOne is not a function

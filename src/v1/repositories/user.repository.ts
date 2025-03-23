@@ -1,19 +1,20 @@
 import BaseRepository from '@core/BaseRepositories.js'
 import { IUser, IUserCreate } from '@interfaces/user.interface.js'
 import UserModel from '@models/user.model.js'
+import { Types } from 'mongoose'
 
 class UserRepository extends BaseRepository<IUser> {
   constructor() {
     super(UserModel)
   }
 
-  getUserByEmail = (email: string) => {
+  findUserByEmail = (email: string) => {
     return this.findOne({
       email
     }).lean()
   }
 
-  getUserById = (id: string) => {
+  findUserById = (id: Types.ObjectId) => {
     return this.findById(id).lean()
   }
 
