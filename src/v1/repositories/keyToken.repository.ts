@@ -1,7 +1,7 @@
 import BaseRepository from '@core/BaseRepositories.js'
 import { IKeyToken, IKeyTokenCreate } from '@interfaces/keytoken.interface.js'
 import KeyTokenModel from '@models/keytoken.model.js'
-import { FilterQuery, QueryOptions, Types } from 'mongoose'
+import { FilterQuery, QueryOptions, Schema } from 'mongoose'
 
 class KeyTokenRepository extends BaseRepository<IKeyToken> {
   constructor() {
@@ -16,7 +16,7 @@ class KeyTokenRepository extends BaseRepository<IKeyToken> {
     return this.model.findOneAndUpdate(filter, data, options).lean()
   }
 
-  removeKeyById(id: Types.ObjectId) {
+  removeKeyById(id: Schema.Types.ObjectId) {
     return this.deleteOne({
       _id: id
     })
@@ -34,7 +34,7 @@ class KeyTokenRepository extends BaseRepository<IKeyToken> {
     }).lean()
   }
 
-  deleteKeyByUID(userId: Types.ObjectId) {
+  deleteKeyByUID(userId: Schema.Types.ObjectId) {
     return this.deleteOne({
       userId
     })

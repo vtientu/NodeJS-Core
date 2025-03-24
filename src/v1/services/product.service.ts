@@ -3,10 +3,11 @@
 import { BadRequestError } from '@core/error.response.js'
 import { IProduct } from '@interfaces/product.interfaces.js'
 import { clothingRepository, electronicRepository, productRepository } from '@repositories/product.repository.js'
+import { Schema } from 'mongoose'
 
 class ProductFactoryService {
-  public static createProduct(type: String, payload: any) {
-    switch (type) {
+  public static createProduct(payload: IProduct) {
+    switch (payload.product_type) {
       case 'Electronic':
         return new Electronic(payload).createProduct()
 
@@ -14,7 +15,7 @@ class ProductFactoryService {
         return new Clothing(payload).createProduct()
 
       default:
-        throw new BadRequestError('Invalid Product Types ' + type)
+        throw new BadRequestError('Invalid Product Types ' + payload.product_type)
     }
   }
 }
@@ -24,18 +25,21 @@ class Product {
     this.product = product
   }
 
-  public async createProduct() {
-    return await productRepository.createProduct(this.product)
+  public async createProduct(product_id: Schema.Types.ObjectId) {
+    return await productRepository.createProduct({ ...this.product, _id: product_id })
   }
 }
 
 class Clothing extends Product {
   public async createProduct() {
-    const newClothing = await clothingRepository.createClothing(this.product.product_attributes)
+    const newClothing = await clothingRepository.createClothing({
+      ...this.product.product_attributes,
+      product_shop: this.product.product_shop
+    })
 
     if (!newClothing) throw new BadRequestError('Create new clothing error!')
 
-    const newProduct = await super.createProduct()
+    const newProduct = await super.createProduct(newClothing._id)
 
     if (!newProduct) throw new BadRequestError('Create new Product error!')
 
@@ -45,11 +49,14 @@ class Clothing extends Product {
 
 class Electronic extends Product {
   public async createProduct() {
-    const newElectronic = await electronicRepository.createElectronic(this.product.product_attributes)
+    const newElectronic = await electronicRepository.createElectronic({
+      ...this.product.product_attributes,
+      product_shop: this.product.product_shop
+    })
 
     if (!newElectronic) throw new BadRequestError('Create new Electronic error!')
 
-    const newProduct = await super.createProduct()
+    const newProduct = await super.createProduct(newElectronic._id)
 
     if (!newProduct) throw new BadRequestError('Create new Product error!')
 

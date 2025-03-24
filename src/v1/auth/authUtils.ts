@@ -1,4 +1,3 @@
-import { Request } from 'express'
 import JWT from 'jsonwebtoken'
 
 export const createTokensPair = ({

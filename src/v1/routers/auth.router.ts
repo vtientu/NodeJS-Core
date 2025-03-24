@@ -6,11 +6,11 @@ const authRouter = Router()
 
 authRouter.post('/signup', asyncHandler(AccessController.signUp))
 authRouter.post('/login', asyncHandler(AccessController.login))
-authRouter.post('/refresh', asyncHandler(AccessController.refreshToken))
 
 /** --------Authentication--------- */
 authRouter.use(authentication)
 
 authRouter.post('/logout', asyncHandler(AccessController.logout))
+authRouter.post('/refresh', asyncHandler(AccessController.refreshToken))
 
 export default authRouter

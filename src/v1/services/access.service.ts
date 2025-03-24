@@ -2,7 +2,7 @@ import { createTokensPair, getTokenFromHeader, verifyJWT } from '@auth/authUtils
 import { BadRequestError, ForbiddenError, UnauthorizedError } from '@core/error.response.js'
 import { ILogin } from '@interfaces/access.interfaces.js'
 import { IKeyToken } from '@interfaces/keytoken.interface.js'
-import { IUserCreate } from '@interfaces/user.interface.js'
+import { IUser, IUserCreate, IUserResponse } from '@interfaces/user.interface.js'
 import KeyTokenRepository from '@repositories/keyToken.repository.js'
 import UserRepository from '@repositories/user.repository.js'
 import KeyTokenService from '@services/keyToken.service.js'
@@ -126,39 +126,37 @@ class AccessService {
     })
   }
 
-  public static async handleRefreshToken(token?: string) {
-    if (!token) throw new BadRequestError()
+  public static async handleRefreshToken({
+    refreshToken,
+    user,
+    keyStore
+  }: {
+    refreshToken?: string
+    user?: IUserResponse
+    keyStore?: IKeyToken
+  }) {
+    if (!refreshToken || !user || !keyStore) throw new BadRequestError()
 
-    const refreshToken = getTokenFromHeader(token)
+    const { _id: userId } = user
 
-    if (!refreshToken) throw new BadRequestError()
-
-    const tokenFound = await KeyTokenRepository.findByRefreshTokenUsed(refreshToken)
-
-    if (tokenFound) {
-      const { userId } = verifyJWT({ token: refreshToken, keySecret: tokenFound.refreshTokenKey }) as JwtPayload
-
+    if (keyStore.refreshTokensUsed.includes(refreshToken)) {
       await KeyTokenRepository.deleteKeyByUID(userId)
       throw new ForbiddenError('Some thing wrong! Please login against')
     }
 
-    const holderToken = await KeyTokenRepository.findByRefreshToken(refreshToken)
+    if (keyStore.refreshToken !== refreshToken) throw new UnauthorizedError()
 
-    if (!holderToken) throw new UnauthorizedError()
-
-    const { _id } = verifyJWT({ token: refreshToken, keySecret: holderToken.refreshTokenKey }) as JwtPayload
-
-    const userFound = await UserRepository.findUserById(_id)
+    const userFound = await UserRepository.findUserById(userId)
 
     if (!userFound) throw new ForbiddenError('Shop not registered!')
 
     const tokens = createTokensPair({
       payload: pickFields(userFound, ['_id', 'name', 'email']),
-      accessTokenKey: holderToken.accessTokenKey,
-      refreshTokenKey: holderToken.refreshTokenKey
+      accessTokenKey: keyStore.accessTokenKey,
+      refreshTokenKey: keyStore.refreshTokenKey
     })
 
-    await KeyTokenRepository.update(holderToken._id, {
+    await KeyTokenRepository.update(keyStore._id, {
       $set: {
         refreshToken: tokens.refreshToken
       },

@@ -53,6 +53,19 @@ export const authentication = asyncHandler(async (req: CustomRequest, res: Respo
     throw new NotFoundError('Not Found Key Store')
   }
 
+  const refreshToken = req.headers[HEADER.REFRESH_TOKEN]?.toString()
+  if (refreshToken) {
+    try {
+      const decodeUser = JWT.verify(refreshToken, keyStore.refreshTokenKey) as JWT.JwtPayload
+      if (userId !== decodeUser?._id) throw new UnauthorizedError('Invalid UserID')
+      req.keyStore = keyStore
+      req.user = decodeUser
+      return next()
+    } catch (error) {
+      throw error
+    }
+  }
+
   const authHeader = req.headers.authorization
 
   const accessToken = getTokenFromHeader(authHeader)
@@ -61,10 +74,10 @@ export const authentication = asyncHandler(async (req: CustomRequest, res: Respo
   }
 
   try {
-    req.headers
     const decodeUser = JWT.verify(accessToken, keyStore.accessTokenKey) as JWT.JwtPayload
     if (userId !== decodeUser?._id) throw new UnauthorizedError('Invalid UserID')
     req.keyStore = keyStore
+    req.user = decodeUser
     next()
   } catch (error) {
     throw error

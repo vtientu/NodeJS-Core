@@ -15,3 +15,9 @@ export interface IUserCreate {
   email: string
   password: string
 }
+
+export interface IUserResponse {
+  _id: Schema.Types.ObjectId
+  name: string
+  email: string
+}

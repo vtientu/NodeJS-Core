@@ -1,0 +1,23 @@
+10:33:24 24-03-2025 [ERROR]: Cannot read properties of undefined (reading '_id')
+10:34:40 24-03-2025 [ERROR]: Cannot read properties of undefined (reading 'userId')
+10:35:30 24-03-2025 [ERROR]: Email or password incorrect!
+10:35:42 24-03-2025 [ERROR]: Email already registered!
+10:35:49 24-03-2025 [ERROR]: Email or password incorrect!
+10:36:15 24-03-2025 [ERROR]: Email not registered!
+10:36:52 24-03-2025 [ERROR]: Cannot read properties of undefined (reading 'userId')
+10:37:16 24-03-2025 [ERROR]: Cannot read properties of undefined (reading 'userId')
+10:37:45 24-03-2025 [ERROR]: Cannot read properties of undefined (reading 'userId')
+10:38:20 24-03-2025 [ERROR]: Cannot read properties of undefined (reading 'userId')
+10:38:50 24-03-2025 [ERROR]: Cannot read properties of undefined (reading 'userId')
+10:39:07 24-03-2025 [ERROR]: invalid signature
+10:39:29 24-03-2025 [ERROR]: invalid signature
+10:40:04 24-03-2025 [ERROR]: invalid signature
+10:40:36 24-03-2025 [ERROR]: invalid signature
+10:40:44 24-03-2025 [ERROR]: invalid signature
+10:41:08 24-03-2025 [ERROR]: invalid signature
+10:42:45 24-03-2025 [ERROR]: Clothing validation failed: product_shop: Path `product_shop` is required.
+11:33:55 24-03-2025 [ERROR]: Not Found Key Store
+11:34:11 24-03-2025 [ERROR]: Bad Request
+11:35:34 24-03-2025 [ERROR]: Bad Request
+11:36:03 24-03-2025 [ERROR]: Bad Request
+11:36:12 24-03-2025 [ERROR]: Bad Request

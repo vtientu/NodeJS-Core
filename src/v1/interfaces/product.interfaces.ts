@@ -13,6 +13,7 @@ export interface IProduct extends Document {
 }
 
 export interface IProductCreate {
+  _id: Schema.Types.ObjectId
   product_name: string
   product_description: string
   product_thumb: string
@@ -28,6 +29,7 @@ export interface IClothing extends Document {
   brand: string
   size: string
   material: string
+  product_shop: Schema.Types.ObjectId
 }
 
 export interface IClothingCreate {
@@ -41,6 +43,7 @@ export interface IElectronic extends Document {
   manufacturer: string
   form: string
   color: string
+  product_shop: Schema.Types.ObjectId
 }
 
 export interface IElectronicCreate {

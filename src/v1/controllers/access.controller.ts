@@ -1,3 +1,4 @@
+import { HEADER } from '@constants/app.constants.js'
 import { CREATED, OK } from '@core/success.response.js'
 import { CustomRequest } from '@interfaces/request.interface.js'
 import AccessService from '@services/access.service.js'
@@ -25,10 +26,14 @@ class AccessController {
     }).send(res)
   }
 
-  public static async refreshToken(req: Request, res: Response, next: NextFunction) {
+  public static async refreshToken(req: CustomRequest, res: Response, next: NextFunction) {
     new OK({
       message: 'Refresh success!',
-      metadata: await AccessService.handleRefreshToken(req.headers.authorization)
+      metadata: await AccessService.handleRefreshToken({
+        refreshToken: req.headers[HEADER.REFRESH_TOKEN]?.toString(),
+        keyStore: req.keyStore,
+        user: req.user
+      })
     }).send(res)
   }
 }

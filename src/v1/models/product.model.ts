@@ -52,7 +52,12 @@ const ClothingSchema = new Schema(
       required: true
     },
     size: String,
-    material: String
+    material: String,
+    product_shop: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
   },
   {
     timestamps: true,
@@ -67,7 +72,12 @@ const ElectronicSchema = new Schema(
       required: true
     },
     form: String,
-    color: String
+    color: String,
+    product_shop: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
   },
   {
     timestamps: true,
