@@ -3,6 +3,7 @@ import { Document, Schema } from 'mongoose'
 export interface IProduct extends Document {
   _id: Schema.Types.ObjectId
   product_name: string
+  product_slug: string
   product_description: string
   product_thumb: string
   product_price: number
@@ -10,6 +11,10 @@ export interface IProduct extends Document {
   product_type: string
   product_shop: Schema.Types.ObjectId
   product_attributes: Schema.Types.Mixed
+  product_rattingAverage: number
+  product_variations: string[]
+  isDraft: boolean
+  isPublished: boolean
 }
 
 export interface IProductCreate {
@@ -21,6 +26,8 @@ export interface IProductCreate {
   product_quantity: number
   product_type: string
   product_shop: Schema.Types.ObjectId
+  product_rattingAverage: number
+  product_variations: string[]
   product_attributes: Schema.Types.Mixed
 }
 

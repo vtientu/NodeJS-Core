@@ -23,3 +23,62 @@
 11:36:12 24-03-2025 [ERROR]: Bad Request
 14:19:04 24-03-2025 [ERROR]: invalid signature
 14:20:14 24-03-2025 [ERROR]: Electronic validation failed: manufacturer: Path `manufacturer` is required.
+15:50:58 24-03-2025 [ERROR]: Cast to ObjectId failed for value "SchemaObjectId {
+  path: '67e1147fd8668b7dc1808f03',
+  instance: 'ObjectId',
+  validators: [],
+  getters: [],
+  setters: [],
+  _presplitPath: [ '67e1147fd8668b7dc1808f03' ],
+  options: SchemaObjectIdOptions {},
+  _index: null,
+  [Symbol(mongoose#schemaType)]: true
+}" (type SchemaObjectId) at path "_id" for model "Product"
+15:53:17 24-03-2025 [ERROR]: Cast to ObjectId failed for value "SchemaObjectId {
+  path: '67e1147fd8668b7dc1808f03',
+  instance: 'ObjectId',
+  validators: [],
+  getters: [],
+  setters: [],
+  _presplitPath: [ '67e1147fd8668b7dc1808f03' ],
+  options: SchemaObjectIdOptions {},
+  _index: null,
+  [Symbol(mongoose#schemaType)]: true
+}" (type SchemaObjectId) at path "_id" for model "Product"
+15:54:05 24-03-2025 [ERROR]: Cast to ObjectId failed for value "SchemaObjectId {
+  path: '67e1147fd8668b7dc1808f03',
+  instance: 'ObjectId',
+  validators: [],
+  getters: [],
+  setters: [],
+  _presplitPath: [ '67e1147fd8668b7dc1808f03' ],
+  options: SchemaObjectIdOptions {},
+  _index: null,
+  [Symbol(mongoose#schemaType)]: true
+}" (type SchemaObjectId) at path "_id" for model "Product"
+15:54:31 24-03-2025 [ERROR]: Cast to ObjectId failed for value "SchemaObjectId {
+  path: '67e1147fd8668b7dc1808f03',
+  instance: 'ObjectId',
+  validators: [],
+  getters: [],
+  setters: [],
+  _presplitPath: [ '67e1147fd8668b7dc1808f03' ],
+  options: SchemaObjectIdOptions {},
+  _index: null,
+  [Symbol(mongoose#schemaType)]: true
+}" (type SchemaObjectId) at path "_id" for model "Product"
+15:55:20 24-03-2025 [ERROR]: Cast to ObjectId failed for value "SchemaObjectId {
+  path: '67e1147fd8668b7dc1808f03',
+  instance: 'ObjectId',
+  validators: [],
+  getters: [],
+  setters: [],
+  _presplitPath: [ '67e1147fd8668b7dc1808f03' ],
+  options: SchemaObjectIdOptions {},
+  _index: null,
+  [Symbol(mongoose#schemaType)]: true
+}" (type SchemaObjectId) at path "_id" for model "Product"
+16:09:24 24-03-2025 [ERROR]: Bad Request
+16:39:41 24-03-2025 [ERROR]: "$search" had the wrong type. Expected string, found null
+16:40:01 24-03-2025 [ERROR]: "$search" had the wrong type. Expected string, found null
+16:40:21 24-03-2025 [ERROR]: "$search" had the wrong type. Expected string, found null

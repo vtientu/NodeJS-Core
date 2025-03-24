@@ -3,7 +3,7 @@ import { IProduct } from '@interfaces/product.interfaces.js'
 import ClothingRepository from '@repositories/clothing.repository.js'
 import ElectronicRepository from '@repositories/electronic.repository.js'
 import ProductRepository from '@repositories/product.repository.js'
-import { Schema } from 'mongoose'
+import { Schema, Types } from 'mongoose'
 
 class ProductFactoryService {
   static productRegistration: { [key: string]: any } = {}
@@ -16,6 +16,83 @@ class ProductFactoryService {
     const productClass = ProductFactoryService.productRegistration[type]
     if (!productClass) throw new BadRequestError('Invalid Product Types ' + type)
     return new productClass(payload).createProduct()
+  }
+
+  public static async findAllDraftsForShop({
+    product_shop,
+    limit = 50,
+    skip = 0
+  }: {
+    product_shop: string
+    limit?: number
+    skip?: number
+  }) {
+    const query = { product_shop, isDraft: true }
+    return await ProductRepository.queryProduct({ query, skip, limit })
+  }
+
+  public static async findAllPublishForShop({
+    product_shop,
+    limit = 50,
+    skip = 0
+  }: {
+    product_shop: string
+    limit?: number
+    skip?: number
+  }) {
+    const query = { product_shop, isPublished: true }
+    return await ProductRepository.queryProduct({ query, skip, limit })
+  }
+
+  public static async searchProducts({ keySearch }: { keySearch?: string }) {
+    const results = await ProductRepository.find({
+      isPublished: true,
+      $text: {
+        $search: keySearch || ''
+      }
+    })
+      .select({ score: { $meta: 'textScore' } })
+      .sort({ score: { $meta: 'textScore' } })
+
+    return results
+  }
+
+  public static async publishProductByShop({ product_shop, product_id }: { product_shop: string; product_id: string }) {
+    const productFound = await ProductRepository.findProductByShop({
+      product_shop: new Types.ObjectId(product_shop),
+      product_id: new Types.ObjectId(product_id)
+    })
+
+    if (!productFound) throw new BadRequestError('Product not found!')
+
+    productFound.isDraft = false
+    productFound.isPublished = true
+
+    const { modifiedCount } = await productFound.updateOne(productFound)
+
+    return modifiedCount
+  }
+
+  public static async unPublishProductByShop({
+    product_shop,
+    product_id
+  }: {
+    product_shop: string
+    product_id: string
+  }) {
+    const productFound = await ProductRepository.findProductByShop({
+      product_shop: new Types.ObjectId(product_shop),
+      product_id: new Types.ObjectId(product_id)
+    })
+
+    if (!productFound) throw new BadRequestError('Product not found!')
+
+    productFound.isDraft = true
+    productFound.isPublished = false
+
+    const { modifiedCount } = await productFound.updateOne(productFound)
+
+    return modifiedCount
   }
 
   // public static createProduct(payload: IProduct) {
