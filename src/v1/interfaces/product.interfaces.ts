@@ -51,3 +51,15 @@ export interface IElectronicCreate {
   form: string
   color: string
 }
+
+export interface IFurniture extends Document {
+  _id: Schema.Types.ObjectId
+  material: string
+  size: string
+  product_shop: Schema.Types.ObjectId
+}
+
+export interface IFurnitureCreate {
+  material: string
+  size: string
+}

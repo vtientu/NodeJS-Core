@@ -21,3 +21,5 @@
 11:35:34 24-03-2025 [ERROR]: Bad Request
 11:36:03 24-03-2025 [ERROR]: Bad Request
 11:36:12 24-03-2025 [ERROR]: Bad Request
+14:19:04 24-03-2025 [ERROR]: invalid signature
+14:20:14 24-03-2025 [ERROR]: Electronic validation failed: manufacturer: Path `manufacturer` is required.

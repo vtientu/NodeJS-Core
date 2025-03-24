@@ -7,7 +7,7 @@ class ProductController {
   public static async createProduct(req: CustomRequest, res: Response, next: NextFunction) {
     new OK({
       message: 'Create Product success!',
-      metadata: await ProductFactoryService.createProduct({
+      metadata: await ProductFactoryService.createProduct(req.body.product_type, {
         ...req.body,
         product_shop: req.user._id
       })

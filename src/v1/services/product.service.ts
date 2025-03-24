@@ -1,23 +1,35 @@
-// Define Factory class to create product
-
 import { BadRequestError } from '@core/error.response.js'
 import { IProduct } from '@interfaces/product.interfaces.js'
-import { clothingRepository, electronicRepository, productRepository } from '@repositories/product.repository.js'
+import ClothingRepository from '@repositories/clothing.repository.js'
+import ElectronicRepository from '@repositories/electronic.repository.js'
+import ProductRepository from '@repositories/product.repository.js'
 import { Schema } from 'mongoose'
 
 class ProductFactoryService {
-  public static createProduct(payload: IProduct) {
-    switch (payload.product_type) {
-      case 'Electronic':
-        return new Electronic(payload).createProduct()
+  static productRegistration: { [key: string]: any } = {}
 
-      case 'Clothing':
-        return new Clothing(payload).createProduct()
-
-      default:
-        throw new BadRequestError('Invalid Product Types ' + payload.product_type)
-    }
+  public static registerProductType(productType: string, productClass: any) {
+    this.productRegistration[productType] = productClass
   }
+
+  public static createProduct(type: string, payload: IProduct) {
+    const productClass = ProductFactoryService.productRegistration[type]
+    if (!productClass) throw new BadRequestError('Invalid Product Types ' + type)
+    return new productClass(payload).createProduct()
+  }
+
+  // public static createProduct(payload: IProduct) {
+  //   switch (payload.product_type) {
+  //     case 'Electronic':
+  //       return new Electronic(payload).createProduct()
+
+  //     case 'Clothing':
+  //       return new Clothing(payload).createProduct()
+
+  //     default:
+  //       throw new BadRequestError('Invalid Product Types ' + payload.product_type)
+  //   }
+  // }
 }
 
 class Product {
@@ -26,13 +38,13 @@ class Product {
   }
 
   public async createProduct(product_id: Schema.Types.ObjectId) {
-    return await productRepository.createProduct({ ...this.product, _id: product_id })
+    return await ProductRepository.createProduct({ ...this.product, _id: product_id })
   }
 }
 
 class Clothing extends Product {
   public async createProduct() {
-    const newClothing = await clothingRepository.createClothing({
+    const newClothing = await ClothingRepository.createClothing({
       ...this.product.product_attributes,
       product_shop: this.product.product_shop
     })
@@ -49,7 +61,7 @@ class Clothing extends Product {
 
 class Electronic extends Product {
   public async createProduct() {
-    const newElectronic = await electronicRepository.createElectronic({
+    const newElectronic = await ElectronicRepository.createElectronic({
       ...this.product.product_attributes,
       product_shop: this.product.product_shop
     })
@@ -63,5 +75,8 @@ class Electronic extends Product {
     return newProduct
   }
 }
+
+ProductFactoryService.registerProductType('Clothing', Clothing)
+ProductFactoryService.registerProductType('Electronic', Electronic)
 
 export default ProductFactoryService
