@@ -1,9 +1,10 @@
 import { BadRequestError } from '@core/error.response.js'
-import { IProduct } from '@interfaces/product.interfaces.js'
+import { IProduct, IProductFilter } from '@interfaces/product.interfaces.js'
 import ProductRepository from '@repositories/product.repository.js'
-import ClothingService from '@services/Clothing.service.js'
+import ClothingService from '@services/clothing.service.js'
 import ElectronicService from '@services/electronic.service.js'
-import { Types } from 'mongoose'
+import { isValidObjectId } from 'mongoose'
+import { Schema, Types } from 'mongoose'
 
 class ProductFactoryService {
   static productRegistration: { [key: string]: any } = {}
@@ -107,6 +108,32 @@ class ProductFactoryService {
   //       throw new BadRequestError('Invalid Product Types ' + payload.product_type)
   //   }
   // }
+
+  public static async findAllProducts({
+    limit = 50,
+    sort = 'ctime',
+    page = 1,
+    filter = { isPublished: true }
+  }: Partial<IProductFilter>) {
+    const products = await ProductRepository.findAllProducts({
+      limit,
+      sort,
+      page,
+      filter,
+      select: ['product_name', 'product_price', 'product_thumb']
+    })
+
+    return products
+  }
+
+  public static async findProduct(product_id?: string) {
+    if (!product_id || !isValidObjectId(product_id)) throw new BadRequestError('Product ID invalid!')
+    const product = await ProductRepository.findProduct({ product_id, unSelect: ['-__v'] })
+
+    if (!product) throw new BadRequestError('Product ID not found!')
+
+    return product
+  }
 }
 
 ProductFactoryService.registerProductType('Clothing', ClothingService)

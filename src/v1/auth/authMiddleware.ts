@@ -7,6 +7,7 @@ import ApiKeyRepository from '@repositories/apikey.repository.js'
 import KeyTokenService from '@services/keyToken.service.js'
 import { NextFunction, Response } from 'express'
 import JWT from 'jsonwebtoken'
+import { isValidObjectId } from 'mongoose'
 
 export const apiKey = async (req: CustomRequest, res: Response, next: NextFunction) => {
   const key = req.headers[HEADER.API_KEY]?.toString()
@@ -43,7 +44,7 @@ export const permission = (permission: string) => async (req: CustomRequest, res
 export const authentication = asyncHandler(async (req: CustomRequest, res: Response, next: NextFunction) => {
   const userId = req.headers[HEADER.CLIENT_ID]?.toString()
 
-  if (!userId) {
+  if (!userId || !isValidObjectId(userId)) {
     throw new UnauthorizedError()
   }
 

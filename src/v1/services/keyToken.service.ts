@@ -1,6 +1,5 @@
 import { IKeyTokenCreate } from '@interfaces/keytoken.interface.js'
 import KeyTokenRepository from '@repositories/keyToken.repository.js'
-import { Types } from 'mongoose'
 
 class KeyTokenService {
   public static async createKeyToken(keyToken: IKeyTokenCreate) {
@@ -19,7 +18,7 @@ class KeyTokenService {
 
   public static async findByUserId(userId: string) {
     return await KeyTokenRepository.findOne({
-      user: new Types.ObjectId(userId)
+      user: userId
     }).lean()
   }
 }

@@ -1,7 +1,7 @@
 import BaseRepository from '@core/BaseRepositories.js'
-import { IProduct, IProductCreate } from '@interfaces/product.interfaces.js'
+import { IProduct, IProductCreate, IProductFilter } from '@interfaces/product.interfaces.js'
 import ProductModel from '@models/product.model.js'
-import { Schema, Types } from 'mongoose'
+import { SortOrder, Types } from 'mongoose'
 
 // Define base product class
 class ProductRepository extends BaseRepository<IProduct> {
@@ -22,6 +22,17 @@ class ProductRepository extends BaseRepository<IProduct> {
       product_shop,
       _id: product_id
     })
+  }
+
+  findAllProducts({ limit, sort, page, filter, select }: IProductFilter) {
+    const skip = (page - 1) * limit
+    const sortBy: { [key: string]: SortOrder } = sort === 'ctime' ? { updateAt: -1 } : { updateAt: 1 }
+
+    return this.find(filter).sort(sortBy).skip(skip).limit(limit).select(select).lean()
+  }
+
+  findProduct({ product_id, unSelect }: { product_id: any; unSelect: string[] }) {
+    return this.findById(product_id).select(unSelect).lean()
   }
 }
 

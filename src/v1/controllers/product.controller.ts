@@ -22,24 +22,6 @@ class ProductController {
    * @param { Number } query
    * @return { JSON }
    */
-  public static async getAllDraftsForShop(req: CustomRequest, res: Response, next: NextFunction) {
-    new OK({
-      message: 'Get list Draft success!',
-      metadata: await ProductFactoryService.findAllDraftsForShop({
-        product_shop: req.user._id
-      })
-    }).send(res)
-  }
-  // END QUERY //
-
-  // QUERY //
-  /**
-   * @description Get all Drafts for shop
-   * @param { Number } limit
-   * @param { Number } skip
-   * @param { Number } query
-   * @return { JSON }
-   */
   public static async getAllPublishForShop(req: CustomRequest, res: Response, next: NextFunction) {
     new OK({
       message: 'Get list Published success!',
@@ -48,6 +30,47 @@ class ProductController {
       })
     }).send(res)
   }
+
+  /**
+   * @description Get all Drafts for shop
+   * @param { Number } limit
+   * @param { Number } skip
+   * @param { Number } query
+   * @return { JSON }
+   */
+  public static async getAllDraftsForShop(req: CustomRequest, res: Response, next: NextFunction) {
+    new OK({
+      message: 'Get list Draft success!',
+      metadata: await ProductFactoryService.findAllDraftsForShop({
+        product_shop: req.user._id
+      })
+    }).send(res)
+  }
+
+  /**
+   * @description Get Products List
+   * @param {IProductFilter} query
+   * @return { ProductList } res
+   */
+  public static async getAllProducts(req: CustomRequest, res: Response, next: NextFunction) {
+    new OK({
+      message: 'Get products list success!',
+      metadata: await ProductFactoryService.findAllProducts(req.query)
+    }).send(res)
+  }
+
+  /**
+   * @description Get Product Detail
+   * @param { String } product_id
+   * @return { ProductList } res
+   */
+  public static async getProductDetails(req: CustomRequest, res: Response, next: NextFunction) {
+    new OK({
+      message: 'Get products details success!',
+      metadata: await ProductFactoryService.findProduct(req.params.id)
+    }).send(res)
+  }
+
   // END QUERY //
 
   public static async getProductBySearchKey(req: Request, res: Response, next: NextFunction) {

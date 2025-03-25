@@ -1,4 +1,4 @@
-import { Document, Schema } from 'mongoose'
+import { Document, FilterQuery, Schema } from 'mongoose'
 
 export interface IProduct extends Document {
   _id: Schema.Types.ObjectId
@@ -69,4 +69,12 @@ export interface IFurniture extends Document {
 export interface IFurnitureCreate {
   material: string
   size: string
+}
+
+export interface IProductFilter {
+  limit: number
+  page: number
+  sort: string
+  filter: FilterQuery<IProduct>
+  select: string | string[] | Record<string, number | boolean | string | object>
 }

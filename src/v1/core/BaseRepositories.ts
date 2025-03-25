@@ -7,7 +7,7 @@ class BaseRepository<T extends Document & { _id: Schema.Types.ObjectId }> {
     this.model = model
   }
 
-  findById(id: Schema.Types.ObjectId) {
+  findById(id: any) {
     return this.model.findById(id)
   }
 

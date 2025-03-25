@@ -11,5 +11,7 @@ productRouter.put('/unpublish/:id', asyncHandler(ProductController.unPublishProd
 // QUERY //
 productRouter.get('/drafts/all', asyncHandler(ProductController.getAllDraftsForShop))
 productRouter.get('/published/all', asyncHandler(ProductController.getAllPublishForShop))
+productRouter.get('/all', asyncHandler(ProductController.getAllProducts))
+productRouter.get('/:id', asyncHandler(ProductController.getProductDetails))
 
 export default productRouter
