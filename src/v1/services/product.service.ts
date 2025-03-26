@@ -1,7 +1,7 @@
 import { BadRequestError } from '@core/error.response.js'
 import { IProduct, IProductFilter } from '@interfaces/product.interfaces.js'
 import ProductRepository from '@repositories/product.repository.js'
-import ClothingService from '@services/clothing.service.js'
+import ClothingService from '@services/clothing.services.js'
 import ElectronicService from '@services/electronic.service.js'
 import { isValidObjectId } from 'mongoose'
 import { Schema, Types } from 'mongoose'
