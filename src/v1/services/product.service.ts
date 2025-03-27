@@ -1,7 +1,7 @@
 import { BadRequestError } from '@core/error.response.js'
-import { IProduct, IProductFilter } from '@interfaces/product.interfaces.js'
+import { IProduct, IProductCreate, IProductFilter } from '@interfaces/product.interfaces.js'
 import ProductRepository from '@repositories/product.repository.js'
-import ClothingService from '@services/clothing.services.js'
+import ClothingService from '@services/clothing.service.js'
 import ElectronicService from '@services/electronic.service.js'
 import { isValidObjectId } from 'mongoose'
 import { Schema, Types } from 'mongoose'
@@ -17,6 +17,21 @@ class ProductFactoryService {
     const productClass = ProductFactoryService.productRegistration[type]
     if (!productClass) throw new BadRequestError('Invalid Product Types ' + type)
     return new productClass(payload).createProduct()
+  }
+
+  public static updateProduct({
+    productType,
+    productId,
+    bodyUpdate
+  }: {
+    productType: string
+    productId?: string
+    bodyUpdate: Partial<IProductCreate>
+  }) {
+    if (!productId || !isValidObjectId(productId)) throw new BadRequestError('Invalid Product Id')
+    const ProductClass = ProductFactoryService.productRegistration[productType]
+    if (!ProductClass) throw new BadRequestError('Invalid Product Types ' + productType)
+    return new ProductClass(bodyUpdate).updateProduct(productId)
   }
 
   public static async findAllDraftsForShop({

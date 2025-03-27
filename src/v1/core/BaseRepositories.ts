@@ -1,4 +1,4 @@
-import { Model, Document, FilterQuery, QueryOptions, Schema, UpdateQuery } from 'mongoose'
+import { Model, Document, FilterQuery, QueryOptions, Schema, UpdateQuery, mongo } from 'mongoose'
 
 class BaseRepository<T extends Document & { _id: Schema.Types.ObjectId }> {
   protected model: Model<T>
@@ -23,7 +23,7 @@ class BaseRepository<T extends Document & { _id: Schema.Types.ObjectId }> {
     return this.model.create(data)
   }
 
-  update(id: Schema.Types.ObjectId, data: UpdateQuery<T>, options: QueryOptions = { new: true }) {
+  update(id: mongo.ObjectId | any, data: UpdateQuery<T>, options: QueryOptions = { new: true }) {
     return this.model.findByIdAndUpdate(id, data, options).exec()
   }
 

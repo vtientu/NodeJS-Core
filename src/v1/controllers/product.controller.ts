@@ -1,15 +1,26 @@
-import { OK } from '@core/success.response.js'
+import { CREATED, OK } from '@core/success.response.js'
 import { CustomRequest } from '@interfaces/request.interface.js'
 import ProductFactoryService from '@services/product.service.js'
 import { NextFunction, Request, Response } from 'express'
 
 class ProductController {
   public static async createProduct(req: CustomRequest, res: Response, next: NextFunction) {
-    new OK({
+    new CREATED({
       message: 'Create Product success!',
       metadata: await ProductFactoryService.createProduct(req.body.product_type, {
         ...req.body,
         product_shop: req.user._id
+      })
+    }).send(res)
+  }
+
+  public static async updateProduct(req: CustomRequest, res: Response, next: NextFunction) {
+    new CREATED({
+      message: 'Update Product success!',
+      metadata: await ProductFactoryService.updateProduct({
+        productId: req.params.id,
+        productType: req.body.product_type,
+        bodyUpdate: req.body
       })
     }).send(res)
   }

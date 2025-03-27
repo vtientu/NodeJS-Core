@@ -1,0 +1,14 @@
+14:17:49 27-03-2025 [ERROR]: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+14:19:41 27-03-2025 [ERROR]: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+14:22:59 27-03-2025 [ERROR]: Operation `Users.findOne()` buffering timed out after 10000ms
+14:23:08 27-03-2025 [ERROR]: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+14:31:28 27-03-2025 [ERROR]: invalid signature
+14:33:28 27-03-2025 [ERROR]: Not Found
+14:34:08 27-03-2025 [ERROR]: Invalid Product Types undefined
+15:15:12 27-03-2025 [ERROR]: Unexpected token 'u', ..."t_price": undefined"... is not valid JSON
+15:42:05 27-03-2025 [ERROR]: Cannot convert undefined or null to object
+15:43:06 27-03-2025 [ERROR]: Cannot convert undefined or null to object
+15:43:41 27-03-2025 [ERROR]: Cannot convert undefined or null to object
+15:44:42 27-03-2025 [ERROR]: Expected double-quoted property name in JSON at position 207
+15:44:45 27-03-2025 [ERROR]: Expected double-quoted property name in JSON at position 207
+16:39:48 27-03-2025 [ERROR]: Not Found Key Store

@@ -1,0 +1,88 @@
+14:17:49 27-03-2025 [ERROR]: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+14:19:41 27-03-2025 [ERROR]: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+14:22:59 27-03-2025 [ERROR]: Operation `Users.findOne()` buffering timed out after 10000ms
+14:23:08 27-03-2025 [ERROR]: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+14:30:58 27-03-2025 [INFO]: Database connected successfully
+14:31:28 27-03-2025 [ERROR]: invalid signature
+14:33:28 27-03-2025 [ERROR]: Not Found
+14:34:08 27-03-2025 [ERROR]: Invalid Product Types undefined
+15:15:12 27-03-2025 [ERROR]: Unexpected token 'u', ..."t_price": undefined"... is not valid JSON
+15:20:55 27-03-2025 [INFO]: Database connected successfully
+15:21:17 27-03-2025 [INFO]: Database connected successfully
+15:21:34 27-03-2025 [INFO]: Database connected successfully
+15:21:38 27-03-2025 [INFO]: Database connected successfully
+15:22:35 27-03-2025 [INFO]: Database connected successfully
+15:22:40 27-03-2025 [INFO]: Database connected successfully
+15:22:58 27-03-2025 [INFO]: Database connected successfully
+15:23:11 27-03-2025 [INFO]: Database connected successfully
+15:23:29 27-03-2025 [INFO]: Database connected successfully
+15:23:32 27-03-2025 [INFO]: Database connected successfully
+15:26:11 27-03-2025 [INFO]: Database connected successfully
+15:26:30 27-03-2025 [INFO]: Database connected successfully
+15:26:34 27-03-2025 [INFO]: Database connected successfully
+15:26:41 27-03-2025 [INFO]: Database connected successfully
+15:27:21 27-03-2025 [INFO]: Database connected successfully
+15:27:36 27-03-2025 [INFO]: Database connected successfully
+15:27:39 27-03-2025 [INFO]: Database connected successfully
+15:27:46 27-03-2025 [INFO]: Database connected successfully
+15:28:17 27-03-2025 [INFO]: Database connected successfully
+15:28:19 27-03-2025 [INFO]: Database connected successfully
+15:28:23 27-03-2025 [INFO]: Database connected successfully
+15:29:02 27-03-2025 [INFO]: Database connected successfully
+15:34:35 27-03-2025 [INFO]: Database connected successfully
+15:34:39 27-03-2025 [INFO]: Database connected successfully
+15:36:16 27-03-2025 [INFO]: Database connected successfully
+15:36:19 27-03-2025 [INFO]: Database connected successfully
+15:36:30 27-03-2025 [INFO]: Database connected successfully
+15:36:40 27-03-2025 [INFO]: Database connected successfully
+15:36:46 27-03-2025 [INFO]: Database connected successfully
+15:36:50 27-03-2025 [INFO]: Database connected successfully
+15:36:57 27-03-2025 [INFO]: Database connected successfully
+15:37:00 27-03-2025 [INFO]: Database connected successfully
+15:37:04 27-03-2025 [INFO]: Database connected successfully
+15:37:10 27-03-2025 [INFO]: Database connected successfully
+15:37:22 27-03-2025 [INFO]: Database connected successfully
+15:37:24 27-03-2025 [INFO]: Database connected successfully
+15:37:32 27-03-2025 [INFO]: Database connected successfully
+15:37:39 27-03-2025 [INFO]: Database connected successfully
+15:37:55 27-03-2025 [INFO]: Database connected successfully
+15:38:58 27-03-2025 [INFO]: Database connected successfully
+15:40:31 27-03-2025 [INFO]: Database connected successfully
+15:40:33 27-03-2025 [INFO]: Database connected successfully
+15:40:41 27-03-2025 [INFO]: Database connected successfully
+15:40:54 27-03-2025 [INFO]: Database connected successfully
+15:40:56 27-03-2025 [INFO]: Database connected successfully
+15:41:00 27-03-2025 [INFO]: Database connected successfully
+15:41:06 27-03-2025 [INFO]: Database connected successfully
+15:41:18 27-03-2025 [INFO]: Database connected successfully
+15:41:21 27-03-2025 [INFO]: Database connected successfully
+15:42:05 27-03-2025 [ERROR]: Cannot convert undefined or null to object
+15:43:02 27-03-2025 [INFO]: Database connected successfully
+15:43:05 27-03-2025 [INFO]: Database connected successfully
+15:43:06 27-03-2025 [ERROR]: Cannot convert undefined or null to object
+15:43:19 27-03-2025 [INFO]: Database connected successfully
+15:43:39 27-03-2025 [INFO]: Database connected successfully
+15:43:41 27-03-2025 [ERROR]: Cannot convert undefined or null to object
+15:43:52 27-03-2025 [INFO]: Database connected successfully
+15:44:01 27-03-2025 [INFO]: Database connected successfully
+15:44:03 27-03-2025 [INFO]: Database connected successfully
+15:44:08 27-03-2025 [INFO]: Database connected successfully
+15:44:13 27-03-2025 [INFO]: Database connected successfully
+15:44:16 27-03-2025 [INFO]: Database connected successfully
+15:44:19 27-03-2025 [INFO]: Database connected successfully
+15:44:21 27-03-2025 [INFO]: Database connected successfully
+15:44:25 27-03-2025 [INFO]: Database connected successfully
+15:44:28 27-03-2025 [INFO]: Database connected successfully
+15:44:30 27-03-2025 [INFO]: Database connected successfully
+15:44:42 27-03-2025 [ERROR]: Expected double-quoted property name in JSON at position 207
+15:44:45 27-03-2025 [ERROR]: Expected double-quoted property name in JSON at position 207
+16:10:19 27-03-2025 [INFO]: Database connected successfully
+16:10:30 27-03-2025 [INFO]: Database connected successfully
+16:33:55 27-03-2025 [INFO]: Database connected successfully
+16:34:01 27-03-2025 [INFO]: Database connected successfully
+16:36:41 27-03-2025 [INFO]: Database connected successfully
+16:36:52 27-03-2025 [INFO]: Database connected successfully
+16:36:58 27-03-2025 [INFO]: Database connected successfully
+16:37:03 27-03-2025 [INFO]: Database connected successfully
+16:39:13 27-03-2025 [INFO]: Database connected successfully
+16:39:48 27-03-2025 [ERROR]: Not Found Key Store

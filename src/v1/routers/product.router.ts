@@ -5,6 +5,7 @@ import { Router } from 'express'
 const productRouter = Router()
 
 productRouter.post('/create', asyncHandler(ProductController.createProduct))
+productRouter.patch('/:id', asyncHandler(ProductController.updateProduct))
 productRouter.put('/publish/:id', asyncHandler(ProductController.publishProductDraft))
 productRouter.put('/unpublish/:id', asyncHandler(ProductController.unPublishProductDraft))
 
