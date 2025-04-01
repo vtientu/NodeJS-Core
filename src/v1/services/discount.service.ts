@@ -7,7 +7,7 @@
   6 - Cancel discount code [User]
 */
 
-import { BadRequestError } from '@core/error.response.js'
+import { BadRequestError, NotFoundError } from '@core/error.response.js'
 import { DiscountWithProductFilter, IDiscountPayload } from '@interfaces/discount.interfaces.js'
 import { IProduct } from '@interfaces/product.interfaces.js'
 import DiscountRepository from '@repositories/discount.repository.js'
@@ -101,6 +101,102 @@ class DiscountService {
     })
 
     return discountCodes
+  }
+
+  // Apply discount code
+  public static async getDiscountAmount({
+    code,
+    userId,
+    shopId,
+    products
+  }: {
+    code: string
+    userId: string
+    shopId: string
+    products: IProduct[]
+  }) {
+    if (!isValidObjectId(shopId)) throw new BadRequestError('Shop ID is invalid!')
+
+    const foundDiscount = await DiscountRepository.findOne({
+      code: code,
+      shopId: shopId
+    }).lean()
+
+    if (!foundDiscount) throw new BadRequestError('Discount code not exists!')
+
+    if (!foundDiscount.is_active) throw new NotFoundError('Discount expired!')
+
+    if (!foundDiscount.max_uses) throw new NotFoundError('Discount are out of stock!')
+
+    if (foundDiscount.max_uses <= 0) throw new NotFoundError('Discount are out of stock!')
+
+    if (new Date() > new Date(foundDiscount.end_date) || new Date() < new Date(foundDiscount.start_date))
+      throw new NotFoundError('Discount expired!')
+
+    let totalOrder = 0
+
+    if (foundDiscount.min_order_value > 0) {
+      totalOrder = products.reduce((acc: number, product: IProduct) => {
+        return acc + product.product_quantity * product.product_price
+      }, 0)
+
+      if (totalOrder < foundDiscount.min_order_value)
+        throw new NotFoundError(`Discount require minimum order value of ${foundDiscount.min_order_value}!`)
+    }
+
+    if (foundDiscount.max_uses_per_user > 0) {
+      const userUserDiscount = foundDiscount.users_used.find((user) => user.user_id === userId)
+
+      if (userUserDiscount) {
+        if (userUserDiscount.uses_count >= foundDiscount.max_uses_per_user)
+          throw new NotFoundError('Discount code has no limit!')
+      }
+    }
+
+    const amount =
+      foundDiscount.type === 'fixed_amount' ? foundDiscount.value : totalOrder * (foundDiscount.value / 100)
+
+    return {
+      totalOrder,
+      discount: amount,
+      totalPrice: totalOrder - amount
+    }
+  }
+
+  public static async deleteDiscountCode({ code, shopId }: { code: string; shopId: string }) {
+    if (!isValidObjectId(shopId)) throw new BadRequestError('Shop ID is invalid!')
+
+    const deleteDiscount = await DiscountRepository.deleteOne({
+      code: code,
+      shopId: shopId
+    })
+
+    return deleteDiscount
+  }
+
+  public static async cancelDiscountCode({ code, shopId, userId }: { code: string; shopId: string; userId: string }) {
+    if (!isValidObjectId(shopId)) throw new BadRequestError('Shop ID is invalid!')
+
+    const foundDiscount = await DiscountRepository.findOne({
+      code: code,
+      shopId: shopId
+    })
+
+    if (!foundDiscount) throw new NotFoundError('Discount code not exists!')
+
+    const cancelDiscount = await DiscountRepository.update(foundDiscount._id, {
+      $pull: {
+        users_used: {
+          userId
+        }
+      },
+      $inc: {
+        max_uses: 1,
+        uses_count: -1
+      }
+    })
+
+    return cancelDiscount
   }
 }
 
