@@ -50,14 +50,16 @@ class ProductFactoryService {
   public static async findAllPublishForShop({
     product_shop,
     limit = 50,
-    skip = 0
+    skip = 0,
+    select = ['-__v', '-isDraft', '-isPublished']
   }: {
     product_shop: string
     limit?: number
     skip?: number
+    select?: string[]
   }) {
     const query = { product_shop, isPublished: true }
-    return await ProductRepository.queryProduct({ query, skip, limit })
+    return await ProductRepository.queryProduct({ query, skip, limit }).select(select)
   }
 
   public static async searchProducts({ keySearch }: { keySearch?: string }) {

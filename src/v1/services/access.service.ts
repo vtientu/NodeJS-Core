@@ -1,4 +1,4 @@
-import { createTokensPair, getTokenFromHeader, verifyJWT } from '@auth/authUtils.js'
+import { createTokensPair, getTokenFromHeader } from '@auth/authUtils.js'
 import { BadRequestError, ForbiddenError, UnauthorizedError } from '@core/error.response.js'
 import { ILogin } from '@interfaces/access.interfaces.js'
 import { IKeyToken } from '@interfaces/keytoken.interface.js'
